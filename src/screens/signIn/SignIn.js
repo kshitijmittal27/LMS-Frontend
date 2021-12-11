@@ -45,7 +45,7 @@ export default function SignIn() {
       email: email,
       password: pass,
     });
-    navigate("employee-dashboard");
+    navigate("/employee-dashboard");
   };
 
   return (
