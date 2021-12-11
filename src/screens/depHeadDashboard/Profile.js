@@ -13,7 +13,7 @@ export default function Profile() {
           <img src="assets/depHead.jpg" alt="depHead" className="avatarPic" />
         </div>
         <div>
-          <h2>Shawn Gosling Coslov</h2>
+          <h2>Rahul Ambani</h2>
           <h3>Product Manager Head</h3>
         </div>
         <div className="profileDetails">

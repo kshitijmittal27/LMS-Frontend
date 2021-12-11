@@ -13,7 +13,7 @@ export default function Profile() {
           <img src="assets/employee.jpg" alt="emp" className="avatarPic" />
         </div>
         <div>
-          <h2>Alexandria Coslov</h2>
+          <h2>Shilpi Dutta</h2>
           <h3>Associate Software Engineer</h3>
         </div>
         <div className="profileDetails">

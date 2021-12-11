@@ -56,10 +56,9 @@ export default function SignIn() {
           item
           xs={false}
           sm={4}
-          md={7}
+          md={8}
           sx={{
-            backgroundImage:
-              "url(https://i.pinimg.com/736x/2e/3f/75/2e3f7503d964fc90e2518169b450fc4b.jpg)",
+            backgroundImage: "url(./assets/signin-bg.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -69,20 +68,24 @@ export default function SignIn() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
           <Box
             sx={{
-              my: 6,
+              my: 3,
               mx: 4,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <img src="assets/lmsLogo.jpeg" alt="lms-logo" />
+            <img
+              src="assets/lmsLogo.jpeg"
+              alt="lms-logo"
+              style={{ width: "150px", marginBottom: "20px" }}
+            />
             {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             </Avatar> */}
-            <Typography component="h1" variant="h4" gutterBottom>
+            <Typography component="h1" variant="h5" gutterBottom>
               LEAVE MANAGEMENT SYSTEM
             </Typography>
             <Typography component="h1" variant="h6" textAlign="left">
