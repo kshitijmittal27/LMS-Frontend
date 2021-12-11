@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/signIn/SignIn";
 import SignUp from "./screens/signUp/SignUp";
 import EmployeeDashboard from "./screens/employeeDashboard/EmployeeDashboard";
+import DepHeadDashboard from "./screens/depHeadDashboard/DepHeadDashboard";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +20,11 @@ ReactDOM.render(
           path="/employee-dashboard"
           element={<EmployeeDashboard />}
         />
-
+        <Route
+          exact
+          path="/dep-head-dashboard"
+          element={<DepHeadDashboard />}
+        />
         {/* <Route exact path="/employee-dashboard" element={<EmployeeDashboard />} /> */}
       </Routes>
     </Router>

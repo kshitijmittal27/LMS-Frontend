@@ -15,7 +15,7 @@ export default function LeaveData() {
     <React.Fragment>
       <Title>Leave balance</Title>
       <Typography component="p" variant="h4">
-        5
+        3
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }} variant="body1">
         As on {new Date().toLocaleDateString()}

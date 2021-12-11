@@ -41,7 +41,7 @@ function Copyright(props) {
   );
 }
 
-const drawerWidth = 250;
+const drawerWidth = 280;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -90,9 +90,8 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const [leaveBalance, setLeaveBalance] = React.useState(2);
-
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -127,7 +126,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Employee Dashboard
+              Department Head Dashboard
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
