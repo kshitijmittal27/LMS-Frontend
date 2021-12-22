@@ -22,6 +22,8 @@ import Profile from "./Profile";
 import LeaveData from "./LeaveData";
 import LeaveHistory from "./LeaveHistory";
 import LeaveApplicationModal from "./LeaveApplicationModal";
+import Title from "./Title";
+import { Button } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -96,7 +98,16 @@ function DashboardContent() {
     setOpen(!open);
   };
   const [modalOpen, setModalOpen] = React.useState(false);
-
+  const [employees, setEmployees] = React.useState();
+  React.useEffect(() => {
+    setEmployees(
+      JSON.parse(window.localStorage.getItem("departmentData")).d_employees
+    );
+    console.log(
+      "departments",
+      JSON.parse(window.localStorage.getItem("departmentData")).d_employees
+    );
+  }, []);
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -197,7 +208,59 @@ function DashboardContent() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <LeaveHistory />
+                  <Title>Employees in Department</Title>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      fontSize: "1.1rem",
+                      fontWeight: "500",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Employee Name
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Employee Username
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Employee Password
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave Balance
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave History
+                    </span>
+                  </div>
+                  {employees &&
+                    employees.length > 0 &&
+                    employees.map((com) => (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          textAlign: "center",
+                        }}
+                      >
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.e_name}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.e_username}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.e_password}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.e_leaveBalance}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          <Button>View</Button>
+                        </span>
+                      </div>
+                    ))}
                 </Paper>
               </Grid>
             </Grid>

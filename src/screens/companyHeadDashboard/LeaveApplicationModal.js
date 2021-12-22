@@ -21,13 +21,12 @@ export default function LeaveApplicationModal(props) {
   //   const [open, setOpen] = React.useState(false);
   //   const handleOpen = () => setOpen(true);
   const handleClose = () => props.setOpen(false);
-  const [number, setNumber] = React.useState();
-  const [reason, setReason] = React.useState("");
-  const [cName, setCName] = React.useState("");
-  const [cHead, setCHead] = React.useState("");
-  const [cEmail, setCEmail] = React.useState("");
-  const [cPass, setCPass] = React.useState("");
+  const [dName, setDName] = React.useState("");
+  const [dHead, setDHead] = React.useState("");
+  const [dEmail, setDEmail] = React.useState("");
+  const [dPass, setDPass] = React.useState("");
   let x = JSON.parse(window.localStorage.getItem("allData"));
+
   return (
     <div>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
@@ -44,7 +43,7 @@ export default function LeaveApplicationModal(props) {
             component="h2"
             gutterBottom
           >
-            Register a new company
+            Add a new department
           </Typography>
           {/* <Typography
             id="modal-modal-title"
@@ -62,12 +61,12 @@ export default function LeaveApplicationModal(props) {
                 required
                 fullWidth
                 id="number"
-                label="Company Name"
-                name="CName"
+                label="Department Name"
+                name="DName"
                 autoComplete="number"
                 autoFocus
-                value={cName}
-                onChange={(e) => setCName(e.target.value)}
+                value={dName}
+                onChange={(e) => setDName(e.target.value)}
               />
             </Grid>
             <Grid item md={5}>
@@ -76,12 +75,12 @@ export default function LeaveApplicationModal(props) {
                 required
                 fullWidth
                 id="reason"
-                label="Company Head"
+                label="Department Head"
                 name="head"
                 autoComplete="reason"
                 autoFocus
-                value={cHead}
-                onChange={(e) => setCHead(e.target.value)}
+                value={dHead}
+                onChange={(e) => setDHead(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -93,12 +92,12 @@ export default function LeaveApplicationModal(props) {
                 fullWidth
                 type="email"
                 id="number"
-                label="CHead username"
+                label="DHead username"
                 name="CName"
                 autoComplete="number"
                 autoFocus
-                value={cEmail}
-                onChange={(e) => setCEmail(e.target.value)}
+                value={dEmail}
+                onChange={(e) => setDEmail(e.target.value)}
               />
             </Grid>
             <Grid item md={5}>
@@ -107,12 +106,12 @@ export default function LeaveApplicationModal(props) {
                 required
                 fullWidth
                 id="reason"
-                label="Chead password"
+                label="Dhead password"
                 name="head"
                 autoComplete="reason"
                 autoFocus
-                value={cPass}
-                onChange={(e) => setCPass(e.target.value)}
+                value={dPass}
+                onChange={(e) => setDPass(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -121,16 +120,16 @@ export default function LeaveApplicationModal(props) {
             onClick={() => {
               x.push({
                 c_id: window.localStorage.getItem("allData").length + 1,
-                c_name: cName,
-                c_head: cHead,
-                c_head_username: cEmail,
-                c_head_password: cPass,
+                c_name: dName,
+                c_head: dHead,
+                c_head_username: dEmail,
+                c_head_password: dPass,
                 departments: [],
               });
-              alert("Company added successfully");
+              alert("Department added successfully");
             }}
           >
-            Add company
+            Add department
           </Button>
         </Box>
       </Modal>

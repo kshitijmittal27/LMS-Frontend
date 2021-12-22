@@ -4,28 +4,43 @@ import Title from "./Title";
 import "./Profile.scss";
 export default function Profile() {
   const theme = useTheme();
-
+  const [employees, setEmployees] = React.useState();
+  React.useEffect(() => {
+    setEmployees(JSON.parse(window.localStorage.getItem("departmentData")));
+    console.log(
+      "departments",
+      JSON.parse(window.localStorage.getItem("departmentData"))
+    );
+  }, []);
   return (
     <React.Fragment>
       <Title>Profile</Title>
       <div className="profileWrapper">
         <div className="avatar">
-          <img src="assets/depHead.jpg" alt="depHead" className="avatarPic" />
+          <img src="assets/jayesh.jpg" alt="chead" className="avatarPic" />
         </div>
-        <div>
-          <h2>Rahul Ambani</h2>
-          <h3>Product Manager Head</h3>
-        </div>
+        {employees && (
+          <div>
+            <h2>{employees.d_head ? employees.d_head : ""}</h2>
+            <h3>Department Head, {employees.d_name}</h3>
+          </div>
+        )}
+
         <div className="profileDetails">
+          {employees && (
+            <p>
+              <strong>Department ID</strong> : {employees.d_id}
+            </p>
+          )}
+
           <p>
-            <strong>Company</strong> : SUN Microsystems
+            <strong>Designation</strong> : UI-UX Manager
           </p>
-          <p>
-            <strong>Designation</strong> :Product Manager Head
-          </p>
-          <p>
-            <strong>Email</strong> : shawn@dephead.com
-          </p>
+          {employees && (
+            <p>
+              <strong>Email</strong> : {employees.d_head_username}
+            </p>
+          )}
         </div>
       </div>
     </React.Fragment>
