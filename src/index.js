@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+// import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignIn from "./screens/signIn/SignIn";
-import SignUp from "./screens/signUp/SignUp";
+// import SignUp from "./screens/signUp/SignUp";
 import EmployeeDashboard from "./screens/employeeDashboard/EmployeeDashboard";
 import DepHeadDashboard from "./screens/depHeadDashboard/DepHeadDashboard";
+import CompanyHeadDashboard from "./screens/companyHeadDashboard/CompanyHeadDashboard";
+import AdminDashboard from "./screens/adminDashboard/AdminDashboard";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +16,7 @@ ReactDOM.render(
       <Routes>
         <Route exact path="/" element={<SignIn />} />
         <Route exact path="/sign-in" element={<SignIn />} />
-        <Route exact path="/sign-up" element={<SignUp />} />
+        {/* <Route exact path="/sign-up" element={<SignUp />} /> */}
         <Route
           exact
           path="/employee-dashboard"
@@ -22,9 +24,15 @@ ReactDOM.render(
         />
         <Route
           exact
-          path="/dep-head-dashboard"
+          path="/department-head-dashboard"
           element={<DepHeadDashboard />}
         />
+        <Route
+          exact
+          path="/company-head-dashboard"
+          element={<CompanyHeadDashboard />}
+        />
+        <Route exact path="/admin-dashboard" element={<AdminDashboard />} />
         {/* <Route exact path="/employee-dashboard" element={<EmployeeDashboard />} /> */}
       </Routes>
     </Router>

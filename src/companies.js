@@ -12,7 +12,7 @@ const companyData = [
         d_name: "UI-UX",
         d_head: "Jayesh Singh",
         d_head_username: "jayesh@dhead",
-        d_head_password: "jayesh@123",
+        d_head_password: "jayesh123",
         d_head_leaveBalance: 3,
         d_head_leaveHistory: [
           {
@@ -41,6 +41,8 @@ const companyData = [
           {
             e_id: 1,
             e_name: "Rahul Dua",
+            e_username: "rahul@emp",
+            e_password: "rahul123",
             e_leaveBalance: 3,
             e_leaveHistory: [
               {
@@ -55,6 +57,8 @@ const companyData = [
           {
             e_id: 2,
             e_name: "Ayush Sharma",
+            e_username: "ayush@emp",
+            e_password: "ayush123",
             e_leaveBalance: 2,
             e_leaveHistory: [
               {
@@ -80,7 +84,7 @@ const companyData = [
         d_name: "Backend Management",
         d_head: "Kshitij Mittal",
         d_head_username: "kshitij@dhead",
-        d_head_password: "kshitij@123",
+        d_head_password: "kshitij123",
         d_head_leaveBalance: 4,
         d_head_leaveHistory: [
           {
@@ -110,6 +114,8 @@ const companyData = [
             e_id: 1,
             e_name: "Shoaib Akhtar",
             e_leaveBalance: 3,
+            e_username: "shoaib@emp",
+            e_password: "shoaib123",
             e_leaveHistory: [
               {
                 leave_id: 1,
@@ -124,6 +130,8 @@ const companyData = [
             e_id: 2,
             e_name: "Ayush Sharma",
             e_leaveBalance: 2,
+            e_username: "ayush@emp",
+            e_password: "ayush123",
             e_leaveHistory: [
               {
                 leave_id: 1,

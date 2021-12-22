@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import companyData from "../../companies";
 
 function Copyright(props) {
   return (
@@ -38,16 +39,108 @@ export default function SignIn() {
   const [pass, setPass] = React.useState("");
 
   const navigate = useNavigate();
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   companyData.map((company) => {
+  //     if (company.c_head_username == email && company.c_head_password == pass) {
+  //       window.localStorage.setItem("companyData", JSON.stringify(company));
+  //       navigate("/company-head-dashboard");
+  //       console.log(window.localStorage.getItem("companyData"));
+  //     } else {
+  //       company.departments.map((department) => {
+  //         if (
+  //           department.d_head_username == email &&
+  //           department.d_head_password == pass
+  //         ) {
+  //           window.localStorage.setItem(
+  //             "departmentData",
+  //             JSON.stringify(department)
+  //           );
+  //           navigate("/department-head-dashboard");
+  //           console.log(window.localStorage.getItem("departmentData"));
+  //         } else {
+  //           department.d_employees.map((employee) => {
+  //             if (employee.e_username == email && employee.e_password == pass) {
+  //               window.localStorage.setItem(
+  //                 "employeeData",
+  //                 JSON.stringify(employee)
+  //               );
+  //               navigate("/employee-dashboard");
+  //               console.log(window.localStorage.getItem("employeeData"));
+  //             } else {
+  //               alert("invalid credentials");
+  //             }
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log({
-      email: email,
-      password: pass,
+    companyData.map((company) => {
+      if (company.c_head_username == email && company.c_head_password == pass) {
+        window.localStorage.setItem("companyData", JSON.stringify(company));
+        navigate("/company-head-dashboard");
+        console.log(window.localStorage.getItem("companyData"));
+      }
+      company.departments.map((department) => {
+        if (
+          department.d_head_username == email &&
+          department.d_head_password == pass
+        ) {
+          window.localStorage.setItem(
+            "departmentData",
+            JSON.stringify(department)
+          );
+          navigate("/department-head-dashboard");
+          console.log(window.localStorage.getItem("departmentData"));
+        }
+        department.d_employees.map((employee) => {
+          if (employee.e_username == email && employee.e_password == pass) {
+            window.localStorage.setItem(
+              "employeeData",
+              JSON.stringify(employee)
+            );
+            navigate("/employee-dashboard");
+            console.log(window.localStorage.getItem("employeeData"));
+          }
+        });
+      });
     });
-    navigate("/employee-dashboard");
   };
 
+  //     else {
+  //       company.departments.map((department) => {
+  //         if (
+  //           department.d_head_username == email &&
+  //           department.d_head_password == pass
+  //         ) {
+  //           window.localStorage.setItem(
+  //             "departmentData",
+  //             JSON.stringify(department)
+  //           );
+  //           navigate("/department-head-dashboard");
+  //           console.log(window.localStorage.getItem("departmentData"));
+  //         } else {
+  //           department.d_employees.map((employee) => {
+  //             if (employee.e_username == email && employee.e_password == pass) {
+  //               window.localStorage.setItem(
+  //                 "employeeData",
+  //                 JSON.stringify(employee)
+  //               );
+  //               navigate("/employee-dashboard");
+  //               console.log(window.localStorage.getItem("employeeData"));
+  //             } else {
+  //               alert("invalid credentials");
+  //             }
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // };
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
