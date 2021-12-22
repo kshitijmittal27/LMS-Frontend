@@ -11,11 +11,19 @@ function preventDefault(event) {
 
 export default function LeaveData() {
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [employee, setEmployee] = React.useState();
+  React.useEffect(() => {
+    setEmployee(JSON.parse(window.localStorage.getItem("employeeData")));
+    console.log(
+      "employee data",
+      JSON.parse(window.localStorage.getItem("employeeData"))
+    );
+  }, []);
   return (
     <React.Fragment>
       <Title>Leave balance</Title>
       <Typography component="p" variant="h4">
-        5
+        {employee && employee.e_leaveBalance}
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }} variant="body1">
         As on {new Date().toLocaleDateString()}

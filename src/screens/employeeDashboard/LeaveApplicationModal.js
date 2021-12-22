@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Grid, TextField } from "@mui/material";
+import { WindowRounded } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -23,7 +24,32 @@ export default function LeaveApplicationModal(props) {
   const handleClose = () => props.setOpen(false);
   const [number, setNumber] = React.useState();
   const [reason, setReason] = React.useState("");
+  const [employee, setEmployee] = React.useState();
+  React.useEffect(() => {
+    setEmployee(JSON.parse(window.localStorage.getItem("employeeData")));
+    console.log(
+      "employee data",
+      JSON.parse(window.localStorage.getItem("employeeData"))
+    );
+  }, []);
 
+  // const handleSubmit = () => {
+  //   JSON.parse(window.localStorage.getItem("employeeData")).e_leaveHistory.push(
+  //     {
+  //       leave_applied: new Date().toLocaleString,
+  //       leave_days: number,
+  //       leave_id:
+  //         JSON.parse(window.localStorage.getItem("employeeData")).e_leaveHistory
+  //           .length + 1,
+  //       leave_reason: reason,
+  //       leave_status: "Pending",
+  //     }
+  //   );
+  //   console.log(
+  //     JSON.parse(window.localStorage.getItem("employeeData")).e_leaveHistory
+  //   );
+  //   // employee.e_leaveHistory.push({})
+  // };
   return (
     <div>
       {/* <Button onClick={handleOpen}>Open modal</Button> */}
@@ -48,7 +74,7 @@ export default function LeaveApplicationModal(props) {
             component="h2"
             gutterBottom
           >
-            Leaves in hand : 5
+            Leaves in hand : {employee && employee.e_leaveBalance}
           </Typography>
           Please fill out these fields :
           <Grid container justifyContent="space-between" alignItems="center">

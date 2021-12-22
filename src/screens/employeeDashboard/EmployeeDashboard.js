@@ -22,6 +22,8 @@ import Profile from "./Profile";
 import LeaveData from "./LeaveData";
 import LeaveHistory from "./LeaveHistory";
 import LeaveApplicationModal from "./LeaveApplicationModal";
+import { Button } from "@mui/material";
+import Title from "./Title";
 
 function Copyright(props) {
   return (
@@ -97,7 +99,14 @@ function DashboardContent() {
     setOpen(!open);
   };
   const [modalOpen, setModalOpen] = React.useState(false);
-
+  const [employee, setEmployee] = React.useState();
+  React.useEffect(() => {
+    setEmployee(JSON.parse(window.localStorage.getItem("employeeData")));
+    console.log(
+      "employee data",
+      JSON.parse(window.localStorage.getItem("employeeData"))
+    );
+  }, []);
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -198,7 +207,58 @@ function DashboardContent() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <LeaveHistory />
+                  <Title>Employees' leave history</Title>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      fontSize: "1.1rem",
+                      fontWeight: "500",
+                      textAlign: "center",
+                    }}
+                  >
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave id
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave reason
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave date
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave days
+                    </span>
+                    <span style={{ textAlign: "center", width: "100%" }}>
+                      Leave Status
+                    </span>
+                  </div>
+                  {employee &&
+                    employee.e_leaveHistory.map((com) => (
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          textAlign: "center",
+                        }}
+                      >
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.leave_id}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.leave_reason}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.leave_applied}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.leave_days}
+                        </span>
+                        <span style={{ textAlign: "center", width: "100%" }}>
+                          {com.leave_status}
+                        </span>
+                      </div>
+                    ))}
                 </Paper>
               </Grid>
             </Grid>
