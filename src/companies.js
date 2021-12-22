@@ -2,7 +2,6 @@ const companyData = [
   {
     c_id: 1,
     c_name: "Nurturelabs",
-    c_logo: "",
     c_head: "Yash Agarwal",
     c_head_username: "yash@chead",
     c_head_password: "yash123",

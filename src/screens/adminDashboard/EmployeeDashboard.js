@@ -1,5 +1,3 @@
-// import React from "react";
-import companyData from "../../companies";
 import * as React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -24,7 +22,6 @@ import Profile from "./Profile";
 import LeaveData from "./LeaveData";
 import LeaveHistory from "./LeaveHistory";
 import LeaveApplicationModal from "./LeaveApplicationModal";
-import Title from "./Title";
 
 function Copyright(props) {
   return (
@@ -93,7 +90,7 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [leaveBalance, setLeaveBalance] = React.useState(2);
 
   const toggleDrawer = () => {
@@ -101,8 +98,6 @@ function DashboardContent() {
   };
   const [modalOpen, setModalOpen] = React.useState(false);
 
-  let companies = window.localStorage.getItem("allData");
-  console.log("companies", companies);
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
@@ -132,7 +127,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              ADMIN PANEL - Leave Management System
+              Employee Dashboard
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -203,35 +198,7 @@ function DashboardContent() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Title>Companies</Title>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      fontSize: "1.1rem",
-                      fontWeight: "500",
-                    }}
-                  >
-                    <span>Company Name</span>
-                    <span>Company Head</span>
-                    <span>CHead username</span>
-                    <span>CHead password</span>
-                  </div>
-                  {companies &&
-                    companies.length > 0 &&
-                    JSON.parse(companies).map((com) => (
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-around",
-                        }}
-                      >
-                        <span>{com.c_name}</span>
-                        <span>{com.c_head}</span>
-                        <span>{com.c_head_username}</span>
-                        <span>{com.c_head_password}</span>
-                      </div>
-                    ))}
+                  <LeaveHistory />
                 </Paper>
               </Grid>
             </Grid>

@@ -40,50 +40,15 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   companyData.map((company) => {
-  //     if (company.c_head_username == email && company.c_head_password == pass) {
-  //       window.localStorage.setItem("companyData", JSON.stringify(company));
-  //       navigate("/company-head-dashboard");
-  //       console.log(window.localStorage.getItem("companyData"));
-  //     } else {
-  //       company.departments.map((department) => {
-  //         if (
-  //           department.d_head_username == email &&
-  //           department.d_head_password == pass
-  //         ) {
-  //           window.localStorage.setItem(
-  //             "departmentData",
-  //             JSON.stringify(department)
-  //           );
-  //           navigate("/department-head-dashboard");
-  //           console.log(window.localStorage.getItem("departmentData"));
-  //         } else {
-  //           department.d_employees.map((employee) => {
-  //             if (employee.e_username == email && employee.e_password == pass) {
-  //               window.localStorage.setItem(
-  //                 "employeeData",
-  //                 JSON.stringify(employee)
-  //               );
-  //               navigate("/employee-dashboard");
-  //               console.log(window.localStorage.getItem("employeeData"));
-  //             } else {
-  //               alert("invalid credentials");
-  //             }
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
   const handleSubmit = (event) => {
     event.preventDefault();
+    let loggedin = 0;
     companyData.map((company) => {
       if (company.c_head_username == email && company.c_head_password == pass) {
         window.localStorage.setItem("companyData", JSON.stringify(company));
         navigate("/company-head-dashboard");
         console.log(window.localStorage.getItem("companyData"));
+        loggedin = 1;
       }
       company.departments.map((department) => {
         if (
@@ -96,6 +61,7 @@ export default function SignIn() {
           );
           navigate("/department-head-dashboard");
           console.log(window.localStorage.getItem("departmentData"));
+          loggedin = 1;
         }
         department.d_employees.map((employee) => {
           if (employee.e_username == email && employee.e_password == pass) {
@@ -105,42 +71,23 @@ export default function SignIn() {
             );
             navigate("/employee-dashboard");
             console.log(window.localStorage.getItem("employeeData"));
+            loggedin = 1;
           }
         });
       });
     });
+
+    if (loggedin === 0) {
+      if (email == "admin@lms" && pass == "admin") {
+        navigate("/admin-dashboard");
+        window.localStorage.setItem("allData", JSON.stringify(companyData));
+        loggedin = 1;
+      } else {
+        alert("invalid credentials");
+      }
+    }
   };
 
-  //     else {
-  //       company.departments.map((department) => {
-  //         if (
-  //           department.d_head_username == email &&
-  //           department.d_head_password == pass
-  //         ) {
-  //           window.localStorage.setItem(
-  //             "departmentData",
-  //             JSON.stringify(department)
-  //           );
-  //           navigate("/department-head-dashboard");
-  //           console.log(window.localStorage.getItem("departmentData"));
-  //         } else {
-  //           department.d_employees.map((employee) => {
-  //             if (employee.e_username == email && employee.e_password == pass) {
-  //               window.localStorage.setItem(
-  //                 "employeeData",
-  //                 JSON.stringify(employee)
-  //               );
-  //               navigate("/employee-dashboard");
-  //               console.log(window.localStorage.getItem("employeeData"));
-  //             } else {
-  //               alert("invalid credentials");
-  //             }
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
-  // };
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
